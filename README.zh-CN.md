@@ -1,6 +1,10 @@
 # ts-abbreviation-skill
 
 <p align="center">
+  <img src="assets/logo.png" alt="ts-abbreviation-skill" width="480">
+</p>
+
+<p align="center">
   <a href="README.zh-CN.md">🇨🇳 简体中文</a> |
   <a href="README.md">🇺🇸 English</a>
 </p>

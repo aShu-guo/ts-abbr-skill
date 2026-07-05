@@ -95,5 +95,6 @@
   "definition": "def",
   "implementation": "impl",
   "instance": "inst",
-  "namespace": "ns"
+  "namespace": "ns",
+  "seconds": "secs"
 }
