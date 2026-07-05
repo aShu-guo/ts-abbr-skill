@@ -1,0 +1,38 @@
+{
+  "name": "ts-abbreviation-skill",
+  "version": "0.1.0",
+  "description": "Claude Code skill that applies a configurable abbreviation dictionary (business→biz, context→ctx, ...) to TypeScript variable/parameter naming.",
+  "type": "module",
+  "bin": {
+    "ts-abbreviation-skill": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "skill"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "keywords": [
+    "claude-code",
+    "skill",
+    "typescript",
+    "naming",
+    "abbreviation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/prompts": "^2.4.9",
+    "ts-morph": "^23.0.0",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

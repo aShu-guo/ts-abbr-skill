@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ts-abbreviation-skill config",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "scope": {
+      "type": "array",
+      "description": "Identifier kinds this skill is allowed to abbreviate.",
+      "items": {
+        "type": "string",
+        "enum": ["variable", "parameter", "localFunction", "class"]
+      },
+      "minItems": 1
+    },
+    "exported": {
+      "type": "boolean",
+      "description": "Whether exported/public symbols may be abbreviated. Defaults to false."
+    }
+  }
+}
