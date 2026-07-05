@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "ts-abbreviation-skill config",
+  "title": "ts-abbr-skill config",
   "type": "object",
   "additionalProperties": false,
   "properties": {

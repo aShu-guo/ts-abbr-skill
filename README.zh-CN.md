@@ -20,27 +20,41 @@
   <a href="https://github.com/aShu-guo/ts-abbreviation-skill/stargazers"><img src="https://img.shields.io/github/stars/aShu-guo/ts-abbreviation-skill?style=flat-square&logo=github" alt="GitHub stars"></a>
 </p>
 
-一个 Claude Code Skill，让生成/重构的 TypeScript 代码命名遵循统一的缩写词典（`business` → `biz`、`context` → `ctx`、`configuration` → `cfg` 等），而不是冗长的全称。
+一个 Agent Skill，让生成/重构的 TypeScript 代码命名遵循统一的缩写词典（`business` → `biz`、`context` → `ctx`、`configuration` → `cfg` 等），而不是冗长的全称。支持 **Claude Code**、**Codex**，以及 [`skills` CLI 支持的所有 agent](https://github.com/vercel-labs/skills)。
 
 ## 安装
+
+### 方式 A — 通用安装器（推荐）
+
+通过 [`skills`](https://github.com/vercel-labs/skills) 支持 Claude Code、Codex 及 70+ 其他 agent：
+
+```bash
+npx skills add aShu-guo/ts-abbreviation-skill
+```
+
+### 方式 B — 专属安装器
 
 ```bash
 npx ts-abbr-skill
 ```
 
-安装时会询问装到哪里：
+会依次询问要为哪些 agent 安装（Claude Code、Codex，可多选）以及装到哪里：
 
-- **项目级** — `./.claude/skills/ts-abbr-skill/`（推荐团队共享，提交到仓库）
-- **全局** — `~/.claude/skills/ts-abbr-skill/`（适用于你所有的项目）
+| Agent | 项目级路径 | 全局路径 |
+|-------|-----------|---------|
+| Claude Code | `./.claude/skills/ts-abbr-skill/` | `~/.claude/skills/ts-abbr-skill/` |
+| Codex | `./.agents/skills/ts-abbr-skill/` | `~/.codex/skills/ts-abbr-skill/` |
 
-两个选项可以同时勾选。重复运行安装器是安全的：目标路径下已存在的 `config/default.config.json` 和 `dictionary/default.json` 不会被覆盖。
+项目级推荐团队共享，提交到仓库；全局适用于你所有的项目。
+
+重复运行安装器是安全的：目标路径下已存在的 `config/default.config.json` 和 `dictionary/default.json` 不会被覆盖。
 
 ## 效果
 
-- **生成新代码时**：Claude 在命名局部变量/参数之前查缩写词典，有匹配则使用缩写形式。
+- **生成新代码时**：agent 在命名局部变量/参数之前查缩写词典，有匹配则使用缩写形式。
 - **重构已有代码时**：批量改名强制走基于 AST 的重命名脚本（`ts-morph`），不允许纯文本替换，避免误改字符串字面量和跨作用域同名变量。改名后必须跑 `tsc --noEmit` 校验，不通过不算完成。
 
-完整规则见 [`skill/SKILL.md`](skill/SKILL.md)。
+完整规则见 [`skills/ts-abbr-skill/SKILL.md`](skills/ts-abbr-skill/SKILL.md)。
 
 ## 内置词典摘录
 
@@ -61,7 +75,7 @@ npx ts-abbr-skill
 | application | app |
 | ... | ... |
 
-完整词典见 [`skill/dictionary/default.json`](skill/dictionary/default.json)。
+完整词典见 [`skills/ts-abbr-skill/dictionary/default.json`](skills/ts-abbr-skill/dictionary/default.json)。
 
 ## 自定义
 
@@ -73,7 +87,7 @@ npx ts-abbr-skill
 
 `scope` 可选值：`variable`、`parameter`、`localFunction`、`class`。`exported` 控制是否对导出/公共符号生效（默认 `false`）。
 
-**添加项目专属缩写** — 在仓库根目录放 `.claude/ts-abbr.local.json`，词条会合并覆盖默认词典：
+**添加项目专属缩写** — 在仓库根目录放 `.ts-abbr-skill.local.json`，词条会合并覆盖默认词典：
 
 ```json
 {
@@ -93,7 +107,7 @@ node dist/cli.js     # 本地测试安装器
 迭代调试 Skill 内容时，用 symlink 代替每次重新构建：
 
 ```bash
-ln -sfn /path/to/ts-abbreviation-skill/skill \
+ln -sfn /path/to/ts-abbreviation-skill/skills/ts-abbr-skill \
   your-test-project/.claude/skills/ts-abbr-skill
 ```
 

@@ -5,19 +5,31 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-export const SKILL_NAME = 'ts-abbreviation-skill'
+export const SKILL_NAME = 'ts-abbr-skill'
 
 /** Files that hold user customizations — never overwrite these if they already exist at the target. */
 const PROTECTED_RELATIVE_PATHS = ['config/default.config.json', 'dictionary/default.json']
 
 export type InstallScope = 'project' | 'global'
+export type Agent = 'claude-code' | 'codex'
 
-export function getSkillSourceDir(): string {
-  return path.join(__dirname, '..', 'skill')
+const AGENT_SKILLS_DIR: Record<Agent, { project: string; global: string }> = {
+  'claude-code': { project: '.claude/skills', global: '.claude/skills' },
+  codex: { project: '.agents/skills', global: '.codex/skills' },
 }
 
-export function getTargetDir(scope: InstallScope, cwd: string): string {
-  const base = scope === 'project' ? path.join(cwd, '.claude', 'skills') : path.join(os.homedir(), '.claude', 'skills')
+export const AGENT_LABELS: Record<Agent, string> = {
+  'claude-code': 'Claude Code',
+  codex: 'Codex',
+}
+
+export function getSkillSourceDir(): string {
+  return path.join(__dirname, '..', 'skills', SKILL_NAME)
+}
+
+export function getTargetDir(agent: Agent, scope: InstallScope, cwd: string): string {
+  const relDir = AGENT_SKILLS_DIR[agent][scope]
+  const base = scope === 'project' ? path.join(cwd, relDir) : path.join(os.homedir(), relDir)
   return path.join(base, SKILL_NAME)
 }
 
@@ -51,9 +63,9 @@ export interface InstallResult {
   skippedExisting: string[]
 }
 
-export function installSkill(scope: InstallScope, cwd: string = process.cwd()): InstallResult {
+export function installSkill(agent: Agent, scope: InstallScope, cwd: string = process.cwd()): InstallResult {
   const srcDir = getSkillSourceDir()
-  const targetDir = getTargetDir(scope, cwd)
+  const targetDir = getTargetDir(agent, scope, cwd)
   const skippedExisting = copyRecursive(srcDir, targetDir, new Set(PROTECTED_RELATIVE_PATHS))
   return { targetDir, skippedExisting }
 }

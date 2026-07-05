@@ -1,14 +1,14 @@
 {
   "name": "ts-abbr-skill",
-  "version": "1.0.0",
-  "description": "Claude Code skill that applies a configurable abbreviation dictionary (business→biz, context→ctx, ...) to TypeScript variable/parameter naming.",
+  "version": "1.1.0",
+  "description": "Agent skill (Claude Code, Codex, and more) that applies a configurable abbreviation dictionary (business→biz, context→ctx, ...) to TypeScript variable/parameter naming.",
   "type": "module",
   "bin": {
     "ts-abbr-skill": "dist/cli.js"
   },
   "files": [
     "dist",
-    "skill"
+    "skills"
   ],
   "scripts": {
     "build": "tsup",
@@ -16,6 +16,8 @@
   },
   "keywords": [
     "claude-code",
+    "codex",
+    "agent-skills",
     "skill",
     "typescript",
     "naming",

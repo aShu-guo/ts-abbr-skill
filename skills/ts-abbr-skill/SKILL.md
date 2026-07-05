@@ -1,5 +1,5 @@
 ---
-name: ts-abbreviation-skill
+name: ts-abbr-skill
 description: Use when writing or refactoring TypeScript variable, parameter, function, or class names — applies a configurable abbreviation dictionary (business→biz, context→ctx, configuration→cfg, etc.) so generated and refactored code matches the team's naming conventions.
 ---
 
@@ -13,7 +13,7 @@ Generated TypeScript code tends to use full, verbose English words for local nam
 
 Before naming anything, resolve config and dictionary by merging, most specific first:
 
-1. Project override: `.claude/ts-abbreviation.local.json` in the current repo root (if present) — entries here are merged on top of the default dictionary/config, not a full replacement.
+1. Project override: `.ts-abbr-skill.local.json` in the current repo root (if present) — entries here are merged on top of the default dictionary/config, not a full replacement.
 2. Default config/dictionary shipped with this skill: `config/default.config.json`, `dictionary/default.json`.
 
 Default config (`config/default.config.json`):
@@ -27,7 +27,7 @@ Default config (`config/default.config.json`):
 - `scope`: which kinds of identifiers this applies to. Possible values: `variable`, `parameter`, `localFunction`, `class`. Only apply abbreviations to kinds listed here.
 - `exported`: whether exported/public symbols (exported consts, public class members, public function names) are in scope. Default `false` — never abbreviate a symbol that's part of a public API unless the project config explicitly sets `exported: true`.
 
-If the project has no `.claude/ts-abbreviation.local.json`, use the defaults as-is.
+If the project has no `.ts-abbr-skill.local.json`, use the defaults as-is.
 
 ## Mode 1: Generating New Code
 
