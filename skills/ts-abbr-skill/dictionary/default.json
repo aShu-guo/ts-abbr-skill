@@ -86,7 +86,6 @@
   "maximum": "max",
   "minimum": "min",
   "average": "avg",
-  "total": "sum",
   "increment": "inc",
   "decrement": "dec",
   "expression": "expr",

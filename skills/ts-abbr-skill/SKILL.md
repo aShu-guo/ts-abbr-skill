@@ -19,6 +19,7 @@ Before naming anything, resolve config and dictionary by merging, most specific 
 Default config (`config/default.config.json`):
 ```json
 {
+  "$schema": "./schema.json",
   "scope": ["variable", "parameter"],
   "exported": false
 }

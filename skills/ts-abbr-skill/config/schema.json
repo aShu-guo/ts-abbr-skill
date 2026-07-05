@@ -4,6 +4,9 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
     "scope": {
       "type": "array",
       "description": "Identifier kinds this skill is allowed to abbreviate.",
