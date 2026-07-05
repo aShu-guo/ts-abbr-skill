@@ -70,7 +70,6 @@ npx ts-abbr-skill
 | reference | ref |
 | element | el |
 | repository | repo |
-| service | svc |
 | database | db |
 | application | app |
 | ... | ... |

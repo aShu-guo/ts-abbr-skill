@@ -70,7 +70,6 @@ See [`skills/ts-abbr-skill/SKILL.md`](skills/ts-abbr-skill/SKILL.md) for the ful
 | reference | ref |
 | element | el |
 | repository | repo |
-| service | svc |
 | database | db |
 | application | app |
 | ... | ... |
