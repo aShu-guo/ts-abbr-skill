@@ -38,6 +38,10 @@ Do not abbreviate:
 - Exported/public symbols unless `exported: true` is configured
 - Identifiers where abbreviating would collide with an existing name in the same scope
 
+**This is a two-pass task, not a one-pass one.** First draft the code naturally. Then, before finishing, do a second pass: enumerate *every* declared identifier in what you just wrote — every parameter, and every local variable (`const`/`let` inside the function body), regardless of whether that word appeared in the user's request — and check each one against the dictionary independently. It's easy to abbreviate the parameters (because they're named right there in the request) and forget local variables the code introduces on its own (intermediate results, loop variables, destructured values). Both are in the default `scope` and both need the same check.
+
+For example, in a function that takes `configuration` and an `identifier` and returns a `message`, the parameters *and* any local variable holding an intermediate value (e.g. a fetched record, a formatted string) all need the same dictionary lookup — not just the ones named in the prompt. Type/class names and exported symbol names are the only things that stay full by default (see `scope`/`exported` above).
+
 ## Mode 2: Refactoring Existing Code (batch rename)
 
 Renaming an existing identifier across a codebase is only safe if every reference updates together. **Never use plain-text `grep`/`sed`/find-and-replace to rename identifiers** — it will corrupt string literals, comments, unrelated identically-named locals in other scopes, and any partial-word matches.
