@@ -10,14 +10,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/aShu-guo/ts-abbreviation-skill/releases"><img src="https://img.shields.io/github/v/release/aShu-guo/ts-abbreviation-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
+  <a href="https://github.com/aShu-guo/ts-abbr-skill/releases"><img src="https://img.shields.io/github/v/release/aShu-guo/ts-abbr-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
   <a href="https://www.npmjs.com/package/ts-abbr-skill"><img src="https://img.shields.io/npm/v/ts-abbr-skill?style=for-the-badge&logo=npm&color=red" alt="npm version"></a>
-  <a href="https://github.com/aShu-guo/ts-abbreviation-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/aShu-guo/ts-abbreviation-skill?style=for-the-badge&color=green" alt="License"></a>
+  <a href="https://github.com/aShu-guo/ts-abbr-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/aShu-guo/ts-abbr-skill?style=for-the-badge&color=green" alt="License"></a>
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/ts-abbr-skill"><img src="https://img.shields.io/npm/dm/ts-abbr-skill?style=flat-square&label=downloads" alt="npm downloads"></a>
-  <a href="https://github.com/aShu-guo/ts-abbreviation-skill/stargazers"><img src="https://img.shields.io/github/stars/aShu-guo/ts-abbreviation-skill?style=flat-square&logo=github" alt="GitHub stars"></a>
+  <a href="https://github.com/aShu-guo/ts-abbr-skill/stargazers"><img src="https://img.shields.io/github/stars/aShu-guo/ts-abbr-skill?style=flat-square&logo=github" alt="GitHub stars"></a>
 </p>
 
 一个 Agent Skill，让生成/重构的 TypeScript 代码命名遵循统一的缩写词典（`business` → `biz`、`context` → `ctx`、`configuration` → `cfg` 等），而不是冗长的全称。支持 **Claude Code**、**Codex**，以及 [`skills` CLI 支持的所有 agent](https://github.com/vercel-labs/skills)。
@@ -29,7 +29,7 @@
 通过 [`skills`](https://github.com/vercel-labs/skills) 支持 Claude Code、Codex 及 70+ 其他 agent：
 
 ```bash
-npx skills add aShu-guo/ts-abbreviation-skill
+npx skills add aShu-guo/ts-abbr-skill
 ```
 
 ### 方式 B — 专属安装器
@@ -106,7 +106,7 @@ node dist/cli.js     # 本地测试安装器
 迭代调试 Skill 内容时，用 symlink 代替每次重新构建：
 
 ```bash
-ln -sfn /path/to/ts-abbreviation-skill/skills/ts-abbr-skill \
+ln -sfn /path/to/ts-abbr-skill/skills/ts-abbr-skill \
   your-test-project/.claude/skills/ts-abbr-skill
 ```
 
